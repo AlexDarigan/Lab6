@@ -5,13 +5,18 @@
 #include <map>
 #include <iostream>
 
+std::map<std::string, bool> map_words(std::vector<std::string> words);
 const std::string LETTER_FREQUENCY_STR_DESC = "etainoshrdlucmfwygpbvkqjx";
+const std::map<std::string, bool> WORD_FREQUENCY_MAP = map_words(split_text(read_file("words.txt")));
+
 
 std::map<std::string, bool> map_words(std::vector<std::string> words) {
+	std::cout << "Generating large amount of words" << std::endl;
 	std::map<std::string, bool> word_freq_map;
 	for (int i = 0; i < words.size(); i++) {
-		word_freq_map[words.at(i)] = false;	
+		word_freq_map[words.at(i)] = false;
 	}
+	std::cout << "Finished loading words" << std::endl << std::endl;
 	return word_freq_map;
 }
 
@@ -42,4 +47,11 @@ std::string decrypt(const std::string& encrypted, int l_shift) {
 	return plain_text;
 }
 
+int count_real_words(std::vector<std::string> words, std::map<std::string, bool> wordmap) {
+	int word_count = 0;
+	for (int i = 0; i < words.size(); i++) {
+		word_count += wordmap.count(words[i]);
+	}
+	return word_count;
+}
 

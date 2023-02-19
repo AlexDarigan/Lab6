@@ -20,7 +20,7 @@ std::string read_file(const std::string& filepath) {
 
 int skip_whitespace(const std::string& text, int position) {
 	// We exit out at -1 because the ++ in the for loop will reach the next word
-	while(is_whitespace(text.at(position)) && position < text.length() - 1) {
+	while(position < text.length() && is_whitespace(text.at(position))) {
 		position++;
 	}
 	return position;
@@ -34,7 +34,7 @@ std::vector<std::string> split_text(const std::string& text) {
 		if (is_whitespace(current)) {
 			words.push_back(word);
 			word = "";
-			pos = skip_whitespace(text, pos);
+			pos = skip_whitespace(text, pos) - 1;
 		}
 		else {
 			word += tolower(text.at(pos));
