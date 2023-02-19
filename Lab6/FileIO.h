@@ -40,16 +40,5 @@ std::vector<std::string> split_text(const std::string& text) {
 			word += text.at(pos);
 		}
 	}
-	std::cout << words.size();
-	/*for (int i = 0; i < words.size(); i++) {
-		std::cout << "|" << words.at(i) << "|" << std::endl;
-	}*/
 	return words;
 }
-
-//std::map<std::string, bool> get_words() {
-//	std::string text = read_file("words.txt");
-//	std::string line;
-//	while (std::getline, )
-//
-//}
