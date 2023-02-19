@@ -5,7 +5,7 @@
 #include <map>
 #include <iostream>
 
-const std::string FREQUENT_LETTERS_DESC = "etainoshrdlucmfwygpbvkqjx";
+const std::string LETTER_FREQUENCY_STR_DESC = "etainoshrdlucmfwygpbvkqjx";
 
 std::map<std::string, bool> map_words(std::vector<std::string> words) {
 	std::map<std::string, bool> word_freq_map;
@@ -14,7 +14,6 @@ std::map<std::string, bool> map_words(std::vector<std::string> words) {
 	}
 	return word_freq_map;
 }
-
 
 bool is_alpha(char character) { return (('a' <= character) && (character <= 'z')); }
 char right_shift(char input, int r_shift) { return (((input - 'a') + r_shift) % 26) + 'a'; }

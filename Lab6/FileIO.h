@@ -37,7 +37,7 @@ std::vector<std::string> split_text(const std::string& text) {
 			pos = skip_whitespace(text, pos);
 		}
 		else {
-			word += text.at(pos);
+			word += tolower(text.at(pos));
 		}
 	}
 	return words;
