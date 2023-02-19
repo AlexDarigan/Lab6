@@ -71,24 +71,23 @@ char* get_frequencies(const std::string &text) {
 
 	int sorted_size = 0;
 	int size = 26;
-	while (size > 0) {
-		// Comparing Values, Want Indexes
+	while (sorted_size < 26) {
 		int most_freq_idx = 0;
 		for (int i = 1; i < size; i++) {
-			if (frequencies[i] > frequencies[most_freq_idx]) {
+			if (frequencies[i] >= frequencies[most_freq_idx]) {
 				most_freq_idx = i;
 			}
 		}
 
-		// Add most_freq_idx to sorted
+		frequencies[most_freq_idx] = -1;
 		sorted[sorted_size] = most_freq_idx + 'a';
 		sorted_size++;
 
-		// left-shift the array to close the gap
-		for(int j = most_freq_idx; j < size - 1; j++) {
+		// left-shift the array to close the gap, can't left shift because it'll screw the alphabet orders, just skip instead?
+		/*for(int j = most_freq_idx; j < size; j++) {
 			frequencies[j] = frequencies[j + 1];
-		}
-		size--;
+		}*/
+		//size--;
 	}
 
 	std::cout << "_" << std::endl;
