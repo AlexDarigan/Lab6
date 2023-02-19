@@ -3,28 +3,8 @@
 
 #pragma once
 #include <iostream>
-
-
-char right_shift(char input, int r_shift) {
-	return (((input - 'a') + r_shift) % 26) + 'a';
-}
-
-char left_shift(char input, int l_shift) {
-	return (((input - 'a') - l_shift) % 26) + 'a';
-}
-
-std::string encrypt(std::string& plain_text) {
-	// right_shift
-	return "";
-}
-
-std::string decrypt(std::string& encrypted_text) {
-	// left_shift
-	return "";
-}
+#include "CaesarCipher.h"
  
 int main() {
-	std::cout << left_shift('d', 1) << std::endl;
-	std::cout << right_shift('e', 1) << std::endl;
-
+	
 }
