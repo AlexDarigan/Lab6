@@ -17,7 +17,12 @@ std::map<std::string, bool> map_words(std::vector<std::string> words) {
 
 bool is_alpha(char character) { return (('a' <= character) && (character <= 'z')); }
 char right_shift(char input, int r_shift) { return (((input - 'a') + r_shift) % 26) + 'a'; }
-char left_shift(char input, int l_shift) { return (((input - 'a') - l_shift) % 26) + 'a'; }
+
+char left_shift(char input, int l_shift) {
+	int shifted = ((input - 'a') - l_shift);
+	while (shifted < 0) { shifted += 26; }
+	return shifted + 'a';
+}
 
 std::string encrypt(const std::string& plain_text, int r_shift) {
 	std::string encrypted = "";
@@ -28,11 +33,11 @@ std::string encrypt(const std::string& plain_text, int r_shift) {
 	return encrypted;
 }
 
-std::string decrypt(std::string& encrypted, int l_shift) {
+std::string decrypt(const std::string& encrypted, int l_shift) {
 	std::string plain_text = "";
 	for (int pos = 0; pos < encrypted.length(); pos++) {
 		char current = encrypted.at(pos);
-		encrypted += is_alpha(current) ? left_shift(current, l_shift) : current;
+		plain_text += is_alpha(current) ? left_shift(current, l_shift) : current;
 	}
 	return plain_text;
 }
