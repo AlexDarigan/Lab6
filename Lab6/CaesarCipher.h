@@ -55,3 +55,48 @@ int count_real_words(std::vector<std::string> words, std::map<std::string, bool>
 	return word_count;
 }
 
+char* get_frequencies(const std::string &text) {
+	char sorted[26] = { ' ' };
+	int frequencies[26] = { 0 };
+	for (int i = 0; i < text.length(); i++) {
+		frequencies[text.at(i) - 'a']++;
+	}
+
+	std::cout << "_" << std::endl;
+	for (int i = 0; i < 26; i++) {
+		char c = i + 'a';
+		std::cout << c << " " << frequencies[i] << std::endl;
+	}
+	std::cout << "_" << std::endl;
+
+	int sorted_size = 0;
+	int size = 26;
+	while (size > 0) {
+		// Comparing Values, Want Indexes
+		int most_freq_idx = 0;
+		for (int i = 1; i < size; i++) {
+			if (frequencies[i] > frequencies[most_freq_idx]) {
+				most_freq_idx = i;
+			}
+		}
+
+		// Add most_freq_idx to sorted
+		sorted[sorted_size] = most_freq_idx + 'a';
+		sorted_size++;
+
+		// left-shift the array to close the gap
+		for(int j = most_freq_idx; j < size - 1; j++) {
+			frequencies[j] = frequencies[j + 1];
+		}
+		size--;
+	}
+
+	std::cout << "_" << std::endl;
+	for (int i = 0; i < 26; i++) {
+		std::cout << sorted[i] << ",";
+	}
+	std::cout << "_" << std::endl;
+	return sorted;
+}
+
+

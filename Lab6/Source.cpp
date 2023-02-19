@@ -22,6 +22,7 @@ void guess_key_for_decryption(const std::string& encrypted_text) {
 	std::string decrypted = "";
 	for (int guess = 0; guess < 25; guess++) {
 		decrypted = decrypt(encrypted_text, guess);
+		get_frequencies(decrypted);
 		std::vector<std::string> words = split_text(decrypted);
 		int word_count = count_real_words(split_text(decrypted), WORD_FREQUENCY_MAP);
 		if (word_count > (words.size() / 2)) {
