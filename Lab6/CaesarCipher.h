@@ -62,13 +62,6 @@ char* get_frequencies(const std::string &text) {
 		frequencies[text.at(i) - 'a']++;
 	}
 
-	std::cout << "_" << std::endl;
-	for (int i = 0; i < 26; i++) {
-		char c = i + 'a';
-		std::cout << c << " " << frequencies[i] << std::endl;
-	}
-	std::cout << "_" << std::endl;
-
 	int sorted_size = 0;
 	int size = 26;
 	while (sorted_size < 26) {
@@ -82,19 +75,8 @@ char* get_frequencies(const std::string &text) {
 		frequencies[most_freq_idx] = -1;
 		sorted[sorted_size] = most_freq_idx + 'a';
 		sorted_size++;
-
-		// left-shift the array to close the gap, can't left shift because it'll screw the alphabet orders, just skip instead?
-		/*for(int j = most_freq_idx; j < size; j++) {
-			frequencies[j] = frequencies[j + 1];
-		}*/
-		//size--;
 	}
 
-	std::cout << "_" << std::endl;
-	for (int i = 0; i < 26; i++) {
-		std::cout << sorted[i] << ",";
-	}
-	std::cout << "_" << std::endl;
 	return sorted;
 }
 
