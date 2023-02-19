@@ -17,6 +17,7 @@ void encrypt_with_user_key(const std::string &plaintext) {
 }
 
 void guess_key_for_decryption(const std::string& encrypted_text) {
+	clock_t begin = clock();
 	std::cout << "Text to decrypt" << std::endl << encrypted_text << std::endl;
 	char input = 'n';
 	std::string decrypted = "";
@@ -26,7 +27,8 @@ void guess_key_for_decryption(const std::string& encrypted_text) {
 		std::vector<std::string> words = split_text(decrypted);
 		int word_count = count_real_words(split_text(decrypted), WORD_FREQUENCY_MAP);
 		if (word_count > (words.size() / 2)) {
-			std::cout << decrypted;
+			std::cout << decrypted << std::endl;
+			std::cout << "Time to decrypt: " << clock() - begin << std::endl;
 			std::cout << std::endl << "This text was decrypted with a key of " << guess << ". Is it correct (y / n)?  " << std::endl;
 			std::cin >> input;
 			if (tolower(input) == 'y') {
@@ -37,6 +39,7 @@ void guess_key_for_decryption(const std::string& encrypted_text) {
 }
 
 void better_guess_key_for_decryption(const std::string& encrypted_text) {
+	clock_t begin = clock();
 	std::cout << "Text to decrypt" << std::endl << encrypted_text << std::endl;
 	char input = 'n';
 	std::string decrypted = "";
@@ -50,7 +53,8 @@ void better_guess_key_for_decryption(const std::string& encrypted_text) {
 			std::vector<std::string> words = split_text(decrypted);
 			int word_count = count_real_words(split_text(decrypted), WORD_FREQUENCY_MAP);
 			if (word_count > (words.size() / 2)) {
-				std::cout << decrypted;
+				std::cout << decrypted << std::endl;
+				std::cout << "Time to decrypt: " << clock() - begin << std::endl;
 				std::cout << std::endl << "This text was decrypted with a key of " << guess << ". Is it correct (y / n)?  " << std::endl;
 				std::cin >> input;
 				if (tolower(input) == 'y') { return; }
