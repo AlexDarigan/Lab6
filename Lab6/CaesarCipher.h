@@ -22,12 +22,7 @@ std::map<std::string, bool> map_words(std::vector<std::string> words) {
 
 bool is_alpha(char character) { return (('a' <= character) && (character <= 'z')); }
 char right_shift(char input, int r_shift) { return (((input - 'a') + r_shift) % 26) + 'a'; }
-
-char left_shift(char input, int l_shift) {
-	int shifted = ((input - 'a') - l_shift);
-	while (shifted < 0) { shifted += 26; }
-	return shifted + 'a';
-}
+char left_shift(char input, int l_shift) { return ((((input - 'a') - l_shift) + 26) % 26) + 'a'; }
 
 std::string encrypt(const std::string& plain_text, int r_shift) {
 	std::string encrypted = "";
